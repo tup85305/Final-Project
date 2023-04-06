@@ -1,0 +1,39 @@
+
+Proposal
+
+##What will likely be the title of your project?
+Maze Game
+(Still trying to figure it out)
+
+##In just a sentence or two, summarize your project
+The goal of my project is to create a complex maze and have a character programmed to listen to the commands of the player to try and move through the maze.
+
+## In a paragraph or more, detail your project. What will your software do? What features will it have? How will it be executed?
+  In the maze game, I am planning on using python and pygame to create a character that will try to get through the maze without knocking into any obstacles or deadends. 
+The software will include a game window displaying the maze, a player going through the maze, and game mechanics like a timer and score system. The maze will be designed 
+using a data structure such as a 2D array or a graph, and will be drawn on the game window using Pygame's drawing functions. The player character will be controlled by 
+the player through keyboard input or mouse control, and will move through the maze to find the correct path to the goal. The game will have obstacles or enemies that the 
+player needs to avoid, and collision detection will be implemented to handle collisions between the player and the maze walls or obstacles. The game will also have a 
+timer to keep track of the player's time, a score system to track the player's progress, and possibly other game mechanics to add challenge and excitement. 
+The game will be executed by running the Python code with Pygame library, which will handle the game window, graphics, user input, and game logic. The player will 
+interact with the game through keyboard or mouse input, and the game will provide visual feedback and updates on the screen.
+
+## If planning to combine 1051's final project with another courses final project, which other course? - N/A
+Also no partners
+
+## In the world of software, most everything takes longer to implement than you expect. And so it's not uncommon to accomplish less in a fixed amount of time than you
+hope.
+
+## In a sentence (or list of features), define a GOOD outcome for your final project. I.e., what WILL you accomplish no matter what?
+Hopefully for a good outcome I pass for my final project and the code works clearly and well, although no matter what I will learn some new information on gaming 
+developement.
+
+## In a sentence (or a list of features), define a BEST outcome for your final project. I.E., what do you hope to accomplish before the final project's deadline?
+I hope to finish the project a week before it is due and recieve an A. 
+
+## In a paragraph or more, outline your next steps. What new skills will you need to acquire? What topics will you need to research? If your working with one or two classmates,
+who will do what?
+I will need to acquire new skills in game development, Python programming, and Pygame library. Specifically, I will need to learn how to implement game mechanics such 
+as collision detection, pathfinding algorithms, and scoring systems. I will also need to research how to design and draw mazes using Pygame, as well as how to 
+incorporate audio and visual effects into the game. Additionally, I may need to learn how to optimize the game's performance and memory usage to ensure smooth gameplay.
+
