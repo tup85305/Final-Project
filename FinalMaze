@@ -1,0 +1,152 @@
+##My final project code in python
+
+import turtle
+import time
+import random
+
+def draw_maze():
+    """Draw maze."""
+    turtle.color('black')
+    turtle.width(5)
+
+    # Add a border to the maze
+    turtle.penup()
+    turtle.goto(-220, -220)
+    turtle.pendown()
+    for _ in range(4):
+        turtle.forward(440)
+        turtle.left(90)
+
+    turtle.width(5)
+    turtle.penup()
+
+    # Flag variable to alternate line direction
+    left_to_right = True
+
+    walls = []  # Initialize the walls list
+
+    for y in range(-180, 200, 40):
+        if left_to_right:
+            # Draw lines from left to right
+            for x in range(-180, 200, 40):
+                turtle.goto(x, y)
+                turtle.pendown()
+                if x == -180 and y == -180:
+                    # Draw a wall going up to create a deadend
+                    turtle.goto(x, y + 40)
+                elif y == 180 and x == 160:
+                    # Draw a wall going right to create a deadend
+                    turtle.goto(x + 40, y)
+                else:
+                    # Choose a random direction to draw a wall
+                    if random.random() < 0.5:
+                        turtle.goto(x, y + 40)
+                    else:
+                        turtle.goto(x + 40, y)
+                walls.append(turtle.clone())  # Append the wall turtle to the walls list
+                turtle.penup()
+        else:
+            # Draw lines from right to left
+            for x in range(180, -200, -40):
+                turtle.goto(x, y)
+                turtle.pendown()
+                if x == 160 and y == -180:
+                    # Draw a wall going right to create a deadend
+                    turtle.goto(x + 40, y)
+                elif y == 180 and x == -180:
+                    # Draw a wall going left to create a deadend
+                    turtle.goto(x, y)
+                else:
+                    # Choose a random direction to draw a wall
+                    if random.random() < 0.5:
+                        turtle.goto(x, y + 40)
+                    else:
+                        turtle.goto(x - 40, y)
+                walls.append(turtle.clone())  # Append the wall turtle to the walls list
+                turtle.penup()
+
+        # Flip the flag for the next row
+        left_to_right = not left_to_right
+
+    # Add a colored dot to mark the entrance and exit of the maze
+    turtle.goto(-200, -200)
+    turtle.color('green')
+    turtle.dot(5)
+    turtle.goto(200, 200)
+    turtle.color('red')
+    turtle.dot(5)
+
+    turtle.update()
+
+    return walls  # Return the walls list
+
+walls = draw_maze()
+start_pos = (-200, -200)
+end_pos = (200, 200)
+
+def has_collision(turtle1, turtle2):
+    """Check for collision between two turtles."""
+    return turtle1.distance(turtle2) < 20
+
+
+
+
+def move_turtle():
+    # create a turtle
+    player = turtle.Turtle()
+    player.speed(0)
+
+    # set player's starting position
+    player.penup()
+    player.goto(start_pos)
+    player.pendown()
+
+    # define the turtle's movement functions
+    def move_up():
+        player.setheading(90)
+        if not any(has_collision(player, wall) for wall in walls):
+            player.forward(10)
+        else:
+            print("You Lose.")
+            turtle.bye()
+
+    def move_down():
+        player.setheading(270)
+        if not any(has_collision(player, wall) for wall in walls):
+            player.forward(10)
+        else:
+            print("You Lose.")
+            turtle.bye()
+
+    def move_left():
+        player.setheading(180)
+        if not any(has_collision(player, wall) for wall in walls):
+            player.forward(10)
+        else:
+            print("You Lose.")
+            turtle.bye()
+
+    def move_right():
+        player.setheading(0)
+        if not any(has_collision(player, wall) for wall in walls):
+            player.forward(10)
+            if player.distance(end_pos) < 20:
+                print("You Win!")
+                turtle.bye()
+        else:
+            print("You Lose.")
+            turtle.bye()
+
+    # set up key bindings for turtle movement
+    turtle.listen()
+    turtle.onkey(move_up, 'Up')
+    turtle.onkey(move_down, 'Down')
+    turtle.onkey(move_left, 'Left')
+    turtle.onkey(move_right, 'Right')
+
+    # start the turtle event loop
+    turtle.mainloop()
+
+    
+
+move_turtle()
